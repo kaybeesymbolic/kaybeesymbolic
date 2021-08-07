@@ -1,13 +1,15 @@
 const {ApolloServer} = require('apollo-server-express')
 const dotenv = require('dotenv')
-const {typeDefs} = require('./schema/typedefs')
-const {resolvers} = require('./schema/resolvers')
-const {context} = require("./schema/context")
-const connectDb = require("./db/connect")
+const {typeDefs} = require('./src/schema/typedefs')
+const {resolvers} = require('./src/schema/resolvers')
+const {context} = require("./src/schema/context")
+const connectDb = require("./src/db/connect")
 const express = require('express')
-dotenv.config()
+
 
 const startApolloServer = async ()=> {
+    let host = process.env.HOSTNAME
+    let port = process.env.PORT
     const server = new ApolloServer({
       typeDefs,
       resolvers,
@@ -22,8 +24,8 @@ const startApolloServer = async ()=> {
   
     // Mount Apollo middleware here.
     server.applyMiddleware({ app, path: '/graphql' });
-    await new Promise(resolve => app.listen({ port: 4000 }, resolve));
-    console.log(`🚀 Server ready at 4000:${server.graphqlPath}`);
+    await new Promise(resolve => app.listen({ port: port}, resolve));
+    console.log(`🚀 Server ready at ${host}:${port}/${server.graphqlPath}`);
     return { server, app };
   }
 

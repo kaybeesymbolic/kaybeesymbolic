@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
-
+require("dotenv").config()
 
 
 const connectDb = async (fn)=>{
-    mongoose.connect("mongodb://localhost:27017/apollo",{
+    mongoose.connect(process.env.DB_URL,{
         useNewUrlParser:true,
         useUnifiedTopology:true,
         useFindAndModify: false,
