@@ -1,4 +1,3 @@
-const persons = require("../../model/person")
 
 exports.getPersons =async (first,last,Person)=>{
     const result =await Person.find({})  
@@ -27,7 +26,7 @@ exports.updatePerson = async(id,input,Person)=>{
     })
 }
 
-exports.countPeople = async(area,Person)=>{
+exports.countCityPeople = async(area,Person)=>{
   const result = await Person.find().where({"areaId":area.id})
   return result.length
 }

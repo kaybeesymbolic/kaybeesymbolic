@@ -22,8 +22,8 @@ const startApolloServer = async ()=> {
   
     // Mount Apollo middleware here.
     server.applyMiddleware({ app, path: '/graphql' });
-    await new Promise(resolve => app.listen({ port: process.env.PORT }, resolve));
-    console.log(`🚀 Server ready at http://${process.env.HOST}:${process.env.PORT}${server.graphqlPath}`);
+    await new Promise(resolve => app.listen({ port: 4000 }, resolve));
+    console.log(`🚀 Server ready at 4000:${server.graphqlPath}`);
     return { server, app };
   }
 

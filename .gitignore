@@ -1,5 +1,5 @@
 .env
+.todo
 
-**/server/node_modules
-package-lock.json
+**/counts/node_modules
 *.log

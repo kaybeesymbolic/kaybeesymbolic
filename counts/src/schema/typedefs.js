@@ -6,7 +6,7 @@ const typeDefs = gql`
    type Person {
        id:ID
        areaId:String!
-       countryId:String
+       countryId:String!
        firstName:String!
        middleName:String!
        lastName:String!
@@ -18,21 +18,26 @@ const typeDefs = gql`
    
    type City {
        id:ID
-       name:String
+       name:String!
        people: [Person]
        count: Int
-       countryId:String
+       countryId:String!
        country: Country
    }
    type Country{
        id:ID
-       isCountry:Boolean
-       name:String
+       name:String!
        people:[Person]
        cities: [City]
+       countsCity: Int 
+       countsPeople: Int
    }
    
    input addCity{
+       name:String!
+       countryId:String!
+   }
+   input addCountry{
        name:String!
    }
    input addPerson{
@@ -51,7 +56,9 @@ const typeDefs = gql`
        persons(first:Int,last:Int):[Person],
        person(id:ID):Person!,
        cities(first:Int,last:Int):[City],
-       city(id:ID):City!
+       city(id:ID):City!,
+       countries(first:Int,last:Int):[Country],
+       country(id:ID):Country!,
       
    }
 
@@ -59,6 +66,7 @@ const typeDefs = gql`
        createPerson(input:addPerson!):Person
        editPerson(id:ID!,input:editPerson!):Person
        createCity(input:addCity!):City
+       createCountry(input:addCountry):Country
    }
 `
 

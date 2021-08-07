@@ -2,9 +2,8 @@ const mongoose = require('mongoose')
 
 
 
-
 const connectDb = async (fn)=>{
-    mongoose.connect(process.env.Db,{
+    mongoose.connect("mongodb://localhost:27017/apollo",{
         useNewUrlParser:true,
         useUnifiedTopology:true,
         useFindAndModify: false,

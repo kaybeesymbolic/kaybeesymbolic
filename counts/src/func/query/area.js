@@ -1,4 +1,3 @@
-const areas = require("../../model/area")
 
 exports.getAreas =async (first,last,City)=>{
     const result =await City.find({})  
@@ -14,10 +13,14 @@ exports.getArea =async (id,City)=>{
     return {}
 }
 
-exports.addArea = async(name,City)=>{
-    const area = new City({name:name})
-    console.log(area)
+exports.addArea = async(countryId,name,City)=>{
+    const area = new City({name:name,countryId:countryId})
     if(await area.save())return area
     return {}
     
+}
+
+exports.countCity = async(country,City) =>{
+    const cities = await City.find().where({"countryId":country.id})
+    return cities.length
 }
