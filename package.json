@@ -8,15 +8,10 @@
     "start": "nodemon ./index.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaybeesymbolic/apollo.git"
-  },
+   },
   "author": "kabir aremu",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kaybeesymbolic/server/issues"
-  },
-  "homepage": "https://github.com/kaybeesymbolic/server#readme",
+  
   "dependencies": {
     "apollo-server-express": "^3.1.2",
     "dotenv": "^10.0.0",
